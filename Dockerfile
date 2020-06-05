@@ -7,8 +7,11 @@ RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies:
-COPY requirements.txt .
+COPY requirements.txt $VIRTUAL_ENV
+WORKDIR $VIRTUAL_ENV
+RUN pip install -r requirements.txt
 
+RUN pip
 COPY app.py .
 COPY tests.py .
 LABEL author="STINSLEY"
