@@ -10,8 +10,6 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt $VIRTUAL_ENV
 WORKDIR $VIRTUAL_ENV
 
-RUN /usr/local/bin/pip3 install -r requirements.txt
-
 COPY app.py .
 COPY tests.py .
 LABEL author="STINSLEY"
