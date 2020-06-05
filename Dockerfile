@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 RUN apt-get update && apt-get install \
-  -y --no-install-recommends python3 python3-virtualenv python-pip
+  -y --no-install-recommends python3 python3-virtualenv python3-pip \
+  python-pip
 
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
@@ -10,7 +11,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt $VIRTUAL_ENV
 WORKDIR $VIRTUAL_ENV
 
-RUN /usr/local/bin/pip install -r requirements.txt
+RUN /bin/pip install -r requirements.txt
 
 RUN pip
 COPY app.py .
