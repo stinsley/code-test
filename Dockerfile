@@ -10,7 +10,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt $VIRTUAL_ENV
 WORKDIR $VIRTUAL_ENV
 
-RUN /usr/local/bin/pip3 install -r requirements.txt
+RUN /usr/local/bin/pip install -r requirements.txt
 
 RUN pip
 COPY app.py .
