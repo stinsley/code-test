@@ -2,3 +2,4 @@
 # this is merely a placeholder
 unittest-xml-reporting
 nose==1.3.7
+pip3
