@@ -1,4 +1,4 @@
-node {
+pipeline {
     def commit_id
     agent { dockerfile true }
     stages {
