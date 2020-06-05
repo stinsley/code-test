@@ -1,4 +1,4 @@
-pipeline {
+node {
     def commit_id
     agent { dockerfile true }
     stages {
@@ -15,25 +15,25 @@ pipeline {
         }
         stage('Unit Testing') { // Perform unit testing
 
-        def testContainer = docker.image('ubuntu:18.04')
-        testContainer.pull()
-        //"--entrypoint='python3 app.py [1,2,3] [7,9,6]'"
-        testContainer.inside() {
+            def testContainer = docker.image('ubuntu:18.04')
+            testContainer.pull()
+            //"--entrypoint='python3 app.py [1,2,3] [7,9,6]'"
+            testContainer.inside() {
 
-            script {
-            sh """
-            sudo apt-get update && apt-get install \
-             -y --no-install-recommends python3 python3-virtualenv python3-pip
-            """
-            sh """
-            export VIRTUAL_ENV=/opt/venv
-            python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
-            PATH="$VIRTUAL_ENV/bin:$PATH"
-             """
+                script {
+                sh """
+                sudo apt-get update && apt-get install \
+                 -y --no-install-recommends python3 python3-virtualenv python3-pip
+                """
+                sh """
+                export VIRTUAL_ENV=/opt/venv
+                python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
+                PATH="$VIRTUAL_ENV/bin:$PATH"
+                 """
 
-              sh """
-              python -m unittest discover -s tests
-              """
+                  sh """
+                  python -m unittest discover -s tests
+                  """
             }
         }
     }
