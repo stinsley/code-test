@@ -14,7 +14,15 @@ node {
         testContainer.inside() {
 
             script {
-
+            sh """
+            sudo apt-get update && apt-get install \
+             -y --no-install-recommends python3 python3-virtualenv python3-pip
+            """
+            sh """
+            export VIRTUAL_ENV=/opt/venv
+            python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
+            PATH="$VIRTUAL_ENV/bin:$PATH"
+             """
 
               sh """
               python -m unittest discover -s tests
