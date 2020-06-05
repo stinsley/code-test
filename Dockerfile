@@ -11,9 +11,8 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt $VIRTUAL_ENV
 WORKDIR $VIRTUAL_ENV
 
-RUN /bin/pip install -r requirements.txt
+RUN /usr/local/bin/pip install -r requirements.txt
 
-RUN pip
 COPY app.py .
 COPY tests.py .
 LABEL author="STINSLEY"
