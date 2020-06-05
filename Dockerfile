@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install \
   -y --no-install-recommends python3 python3-virtualenv python3-pip
 
 ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m virtualenv --python=/usr/bin/python3 $VIRTUAL_ENV
+RUN python3 -m virtualenv --python=/usr/bin/python3 --pip=/usr/bin/pip3 $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies:
