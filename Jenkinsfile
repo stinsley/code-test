@@ -14,9 +14,6 @@ node {
         testContainer.inside() {
 
             script {
-            sh """
-              pip install -r requirements.txt
-              """
 
               sh """
               python -m unittest discover -s tests
